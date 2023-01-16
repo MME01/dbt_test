@@ -1,0 +1,65 @@
+{{ config(
+    cluster_by = "_airbyte_emitted_at",
+    partition_by = {"field": "_airbyte_emitted_at", "data_type": "timestamp", "granularity": "day"},
+    unique_key = '_airbyte_ab_id',
+    schema = "_airbyte_lnd_ula_pnet_prd",
+    tags = [ "top-level-intermediate" ]
+) }}
+-- SQL model to cast each column to its adequate SQL type converted from the JSON schema type
+-- depends_on: {{ ref('LND_TBL_STD_HR_PERIOD_ab1') }}
+select
+    cast(STD_ID_HR as {{ dbt_utils.type_string() }}) as STD_ID_HR,
+    cast(ID_APPROLE as {{ dbt_utils.type_string() }}) as ID_APPROLE,
+    cast(ID_SECUSER as {{ dbt_utils.type_string() }}) as ID_SECUSER,
+    cast(SAR_CODIGO as {{ dbt_utils.type_float() }}) as SAR_CODIGO,
+    cast(SME_SALARY as {{ dbt_utils.type_float() }}) as SME_SALARY,
+    cast(STD_DT_END as {{ dbt_utils.type_string() }}) as STD_DT_END,
+    cast(SFR_SEN_SUP as {{ dbt_utils.type_float() }}) as SFR_SEN_SUP,
+    cast(SSP_PAGO_TA as {{ dbt_utils.type_float() }}) as SSP_PAGO_TA,
+    cast(STD_COMMENT as {{ dbt_utils.type_string() }}) as STD_COMMENT,
+    cast(STD_DT_START as {{ dbt_utils.type_string() }}) as STD_DT_START,
+    cast(SPO_EXT_TELEF as {{ dbt_utils.type_string() }}) as SPO_EXT_TELEF,
+    cast(DT_LAST_UPDATE as {{ dbt_utils.type_string() }}) as DT_LAST_UPDATE,
+    cast(SSP_FEC_EXTRAS as {{ dbt_utils.type_string() }}) as SSP_FEC_EXTRAS,
+    cast(STD_ID_HR_TYPE as {{ dbt_utils.type_string() }}) as STD_ID_HR_TYPE,
+    cast(SUK_LAST_WK_DT as {{ dbt_utils.type_string() }}) as SUK_LAST_WK_DT,
+    cast(CCL_BAJAENVIADA as {{ dbt_utils.type_float() }}) as CCL_BAJAENVIADA,
+    cast(ID_ORGANIZATION as {{ dbt_utils.type_string() }}) as ID_ORGANIZATION,
+    cast(SAR_CERTIF_ORIG as {{ dbt_utils.type_string() }}) as SAR_CERTIF_ORIG,
+    cast(STD_DT_SEN_PROF as {{ dbt_utils.type_string() }}) as STD_DT_SEN_PROF,
+    cast(SUK_ACT_LEAV_DT as {{ dbt_utils.type_string() }}) as SUK_ACT_LEAV_DT,
+    cast(SFR_DT_SENIORITY as {{ dbt_utils.type_string() }}) as SFR_DT_SENIORITY,
+    cast(SME_ID_HR_STATUS as {{ dbt_utils.type_string() }}) as SME_ID_HR_STATUS,
+    cast(SPO_COMENT_SAIDA as {{ dbt_utils.type_string() }}) as SPO_COMENT_SAIDA,
+    cast(STD_KEY_EMPLOYEE as {{ dbt_utils.type_string() }}) as STD_KEY_EMPLOYEE,
+    cast(STD_OR_HR_PERIOD as {{ dbt_utils.type_float() }}) as STD_OR_HR_PERIOD,
+    cast(SUK_PROB_RESULTS as {{ dbt_utils.type_float() }}) as SUK_PROB_RESULTS,
+    cast(SME_OR_HR_PER_ANT as {{ dbt_utils.type_float() }}) as SME_OR_HR_PER_ANT,
+    cast(SPO_ID_EST_QUADRO as {{ dbt_utils.type_string() }}) as SPO_ID_EST_QUADRO,
+    cast(SSP_NUM_MATRICULA as {{ dbt_utils.type_string() }}) as SSP_NUM_MATRICULA,
+    cast(SSP_NUM_PLURIEMPL as {{ dbt_utils.type_string() }}) as SSP_NUM_PLURIEMPL,
+    cast(STD_ID_EXTERN_ORG as {{ dbt_utils.type_string() }}) as STD_ID_EXTERN_ORG,
+    cast(STD_STRATEGIC_EMP as {{ dbt_utils.type_string() }}) as STD_STRATEGIC_EMP,
+    cast(SUK_PROB_END_DATE as {{ dbt_utils.type_string() }}) as SUK_PROB_END_DATE,
+    cast(SUK_TERM_RESIG_DT as {{ dbt_utils.type_string() }}) as SUK_TERM_RESIG_DT,
+    cast(SAR_ID_SIT_REVISTA as {{ dbt_utils.type_string() }}) as SAR_ID_SIT_REVISTA,
+    cast(SFR_DT_SENIORITY_G as {{ dbt_utils.type_string() }}) as SFR_DT_SENIORITY_G,
+    cast(SFR_DT_SENIORITY_L as {{ dbt_utils.type_string() }}) as SFR_DT_SENIORITY_L,
+    cast(SME_ID_MOT_BAJA_IM as {{ dbt_utils.type_string() }}) as SME_ID_MOT_BAJA_IM,
+    cast(SPO_ID_EST_SALARIO as {{ dbt_utils.type_string() }}) as SPO_ID_EST_SALARIO,
+    cast(SSP_CHK_IRPF_MOVIL as {{ dbt_utils.type_float() }}) as SSP_CHK_IRPF_MOVIL,
+    cast(SSP_CHK_IRPF_PROLO as {{ dbt_utils.type_float() }}) as SSP_CHK_IRPF_PROLO,
+    cast(SSP_FEC_ANTIGUEDAD as {{ dbt_utils.type_string() }}) as SSP_FEC_ANTIGUEDAD,
+    cast(STD_ID_HRP_END_REA as {{ dbt_utils.type_string() }}) as STD_ID_HRP_END_REA,
+    cast(STD_ID_HRP_SRT_REA as {{ dbt_utils.type_string() }}) as STD_ID_HRP_SRT_REA,
+    cast(SUK_CONT_SERV_DATE as {{ dbt_utils.type_string() }}) as SUK_CONT_SERV_DATE,
+    cast(SUK_CONT_SERV_REAS as {{ dbt_utils.type_string() }}) as SUK_CONT_SERV_REAS,
+    cast(SUK_EXT_PROB_END_D as {{ dbt_utils.type_string() }}) as SUK_EXT_PROB_END_D,
+    _airbyte_ab_id,
+    _airbyte_emitted_at,
+    {{ current_timestamp() }} as _airbyte_normalized_at
+from {{ ref('LND_TBL_STD_HR_PERIOD_ab1') }}
+-- LND_TBL_STD_HR_PERIOD
+where 1 = 1
+{{ incremental_clause('_airbyte_emitted_at', this) }}
+

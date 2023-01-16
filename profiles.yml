@@ -1,0 +1,84 @@
+config:
+  partial_parse: true
+  printer_width: 120
+  send_anonymous_usage_stats: false
+  use_colors: true
+normalize:
+  outputs:
+    prod:
+      dataset: lnd_ula_pnet_prd
+      keyfile_json:
+        auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+        auth_uri: https://accounts.google.com/o/oauth2/auth
+        client_email: airbyte-edp-data-sync-prd@df-ops-data-edp-prd.iam.gserviceaccount.com
+        client_id: '103125357149131908717'
+        client_x509_cert_url: https://www.googleapis.com/robot/v1/metadata/x509/airbyte-edp-data-sync-prd%40df-ops-data-edp-prd.iam.gserviceaccount.com
+        private_key: '-----BEGIN PRIVATE KEY-----
+
+          MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDlJsOrvLnu/SlI
+
+          kiR4mnUOiC1M0FXi7uAR6DL5vXasQRJyuPu0709Mqfr/VUTZDEwSDX0mpCngo1Y/
+
+          qs3R59DxDpoLU3lHtKVWJCSoNONLSTp5AywmK2eRcJf4dH3/ebawFNlwIAMExJ9j
+
+          L4SG5mH8yYsryUJlFdMSWci3AlG9Hsy8gJlv5Mb3B4xyDXgjONQvRij01i+uWr5h
+
+          ASSGQ1sLZjOHGkwtnO+vKi8HWAKcgSY7YqVUabtglbWvkEsVjlKbstK3iYkI+ZHh
+
+          TEHe0vvgeXF+r6WbzFq5ea2a8vpSnkLg0cwxARuneXI7EvMhOxSo0qnQxScTFm2V
+
+          i8qrg98bAgMBAAECggEAASTQeF1Q2FdKXWpiiZWbJv1We6jU2HkniHDfhr3a/1RC
+
+          PDhEQR7O9wP/18xuity3BraU98T/LgosVFcnbXhOU06YgqkrOjx67vva+qtDc/Gf
+
+          pW2vyL6kJeB6hghoGGh48qPVdmXlDC9Qp5g7RKgIby3noYliWta4fnCG3Iq9pNne
+
+          hBIsf8pb8gc31PPKEbpnLz3aE2Ce4VB5UMb2rctKDFe4S7O/3fUN1GRcDuHyicNX
+
+          b6YmD25Ba8AvACMI9Q5ha9D/IFgMz5iLrLMydawq/MW5lNOlxdIpxHw05VsLl2Bt
+
+          kgxo3d2A2r+LGd+OBoIr+MXokLm3HHBXiGeTWmLYeQKBgQD4kQTlJ7u9arb2ANat
+
+          gSydqlCpFoIG5IMQ8Z/IkQ5GW+kzoAoCgsqUUat5CnUX1GNSju9Q1qsbJK6itII3
+
+          +sYVsbLgX0tZ6a17K70OPNRmGzb5MgNkXS/TfVyxKimYigjHLVCdGFH9QX4LY9GR
+
+          od5/V7Dt7vDJbkUYSp23XRqbZwKBgQDsARtjC/N7jMul0twbtvs9GGOhg3PrQJQL
+
+          gd55dnsNP0pENwY9hlOGC4yxfOnBVVJjj+6esUvUEKlVfAPD9NSI2wpAeM+1Pmhy
+
+          c1CuqRfRo/VdUo440PPgjJbUvEHwejmKm2jXdPx9VvnLBO0dzJHueUkhupsLB8NB
+
+          tAUoikpCLQKBgFv0ol/4PA8ODJOjqcfUUuIdIOv85KuSHB7HlLoJV8OVuwcbPLjD
+
+          FBicwhfsU3c2XmwrbsN0Nya6glS0/Lui7WcXLzqsZl7kAQbhHnbG8Di59rNn2jNl
+
+          +gx+gy0TkQHahvbQf9MuLR7I/M1P5za+MGbh1RWg4LlULwGWkRRFwFMfAoGBANSO
+
+          wq3Yi7lRO/HkEh5cFbgXCVTk4jiV90DN/SQElBuAT1FVBafQHdXy/Qq2aIqaYBQQ
+
+          BGilYphjUUAO7A1Hq0x/i6I5rUmeJdA/EAHfhfZo54rf2fxOJfiuZwK/c9w1GTI/
+
+          epPjZ60z8tLpYu6d2ymfz0Azo4SxvyikDKlQtEUZAoGBAOcXFRImt7BUJW+zgJiV
+
+          QhKY+3D3oGdkqHpPqdgfrzqgUBjADtgKesWo8VGqwFvKkoAk5U93QTRpodOPOz9d
+
+          ZXU9A81v6QVS7zA6fjFy1F8OVbCNlrC7DIP0NHmDB4JGpEVqLybXy1yWe31Uc6Jv
+
+          S/R84rFd4XOie9OuQODw7ttB
+
+          -----END PRIVATE KEY-----
+
+          '
+        private_key_id: 19856e64771cb8ad37a2781cad7e81ee2a7aca85
+        project_id: df-ops-data-edp-prd
+        token_uri: https://oauth2.googleapis.com/token
+        type: service_account
+      location: US
+      method: service-account-json
+      priority: batch
+      project: df-ops-data-edp-prd
+      retries: 3
+      threads: 8
+      type: bigquery
+  target: prod

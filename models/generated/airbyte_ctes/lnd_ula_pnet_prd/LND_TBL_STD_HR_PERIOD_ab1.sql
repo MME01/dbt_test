@@ -1,0 +1,65 @@
+{{ config(
+    cluster_by = "_airbyte_emitted_at",
+    partition_by = {"field": "_airbyte_emitted_at", "data_type": "timestamp", "granularity": "day"},
+    unique_key = '_airbyte_ab_id',
+    schema = "_airbyte_lnd_ula_pnet_prd",
+    tags = [ "top-level-intermediate" ]
+) }}
+-- SQL model to parse JSON blob stored in a single column and extract into separated field columns as described by the JSON Schema
+-- depends_on: {{ source('lnd_ula_pnet_prd', '_airbyte_raw_LND_TBL_STD_HR_PERIOD') }}
+select
+    {{ json_extract_scalar('_airbyte_data', ['STD_ID_HR'], ['STD_ID_HR']) }} as STD_ID_HR,
+    {{ json_extract_scalar('_airbyte_data', ['ID_APPROLE'], ['ID_APPROLE']) }} as ID_APPROLE,
+    {{ json_extract_scalar('_airbyte_data', ['ID_SECUSER'], ['ID_SECUSER']) }} as ID_SECUSER,
+    {{ json_extract_scalar('_airbyte_data', ['SAR_CODIGO'], ['SAR_CODIGO']) }} as SAR_CODIGO,
+    {{ json_extract_scalar('_airbyte_data', ['SME_SALARY'], ['SME_SALARY']) }} as SME_SALARY,
+    {{ json_extract_scalar('_airbyte_data', ['STD_DT_END'], ['STD_DT_END']) }} as STD_DT_END,
+    {{ json_extract_scalar('_airbyte_data', ['SFR_SEN_SUP'], ['SFR_SEN_SUP']) }} as SFR_SEN_SUP,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_PAGO_TA'], ['SSP_PAGO_TA']) }} as SSP_PAGO_TA,
+    {{ json_extract_scalar('_airbyte_data', ['STD_COMMENT'], ['STD_COMMENT']) }} as STD_COMMENT,
+    {{ json_extract_scalar('_airbyte_data', ['STD_DT_START'], ['STD_DT_START']) }} as STD_DT_START,
+    {{ json_extract_scalar('_airbyte_data', ['SPO_EXT_TELEF'], ['SPO_EXT_TELEF']) }} as SPO_EXT_TELEF,
+    {{ json_extract_scalar('_airbyte_data', ['DT_LAST_UPDATE'], ['DT_LAST_UPDATE']) }} as DT_LAST_UPDATE,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_FEC_EXTRAS'], ['SSP_FEC_EXTRAS']) }} as SSP_FEC_EXTRAS,
+    {{ json_extract_scalar('_airbyte_data', ['STD_ID_HR_TYPE'], ['STD_ID_HR_TYPE']) }} as STD_ID_HR_TYPE,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_LAST_WK_DT'], ['SUK_LAST_WK_DT']) }} as SUK_LAST_WK_DT,
+    {{ json_extract_scalar('_airbyte_data', ['CCL_BAJAENVIADA'], ['CCL_BAJAENVIADA']) }} as CCL_BAJAENVIADA,
+    {{ json_extract_scalar('_airbyte_data', ['ID_ORGANIZATION'], ['ID_ORGANIZATION']) }} as ID_ORGANIZATION,
+    {{ json_extract_scalar('_airbyte_data', ['SAR_CERTIF_ORIG'], ['SAR_CERTIF_ORIG']) }} as SAR_CERTIF_ORIG,
+    {{ json_extract_scalar('_airbyte_data', ['STD_DT_SEN_PROF'], ['STD_DT_SEN_PROF']) }} as STD_DT_SEN_PROF,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_ACT_LEAV_DT'], ['SUK_ACT_LEAV_DT']) }} as SUK_ACT_LEAV_DT,
+    {{ json_extract_scalar('_airbyte_data', ['SFR_DT_SENIORITY'], ['SFR_DT_SENIORITY']) }} as SFR_DT_SENIORITY,
+    {{ json_extract_scalar('_airbyte_data', ['SME_ID_HR_STATUS'], ['SME_ID_HR_STATUS']) }} as SME_ID_HR_STATUS,
+    {{ json_extract_scalar('_airbyte_data', ['SPO_COMENT_SAIDA'], ['SPO_COMENT_SAIDA']) }} as SPO_COMENT_SAIDA,
+    {{ json_extract_scalar('_airbyte_data', ['STD_KEY_EMPLOYEE'], ['STD_KEY_EMPLOYEE']) }} as STD_KEY_EMPLOYEE,
+    {{ json_extract_scalar('_airbyte_data', ['STD_OR_HR_PERIOD'], ['STD_OR_HR_PERIOD']) }} as STD_OR_HR_PERIOD,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_PROB_RESULTS'], ['SUK_PROB_RESULTS']) }} as SUK_PROB_RESULTS,
+    {{ json_extract_scalar('_airbyte_data', ['SME_OR_HR_PER_ANT'], ['SME_OR_HR_PER_ANT']) }} as SME_OR_HR_PER_ANT,
+    {{ json_extract_scalar('_airbyte_data', ['SPO_ID_EST_QUADRO'], ['SPO_ID_EST_QUADRO']) }} as SPO_ID_EST_QUADRO,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_NUM_MATRICULA'], ['SSP_NUM_MATRICULA']) }} as SSP_NUM_MATRICULA,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_NUM_PLURIEMPL'], ['SSP_NUM_PLURIEMPL']) }} as SSP_NUM_PLURIEMPL,
+    {{ json_extract_scalar('_airbyte_data', ['STD_ID_EXTERN_ORG'], ['STD_ID_EXTERN_ORG']) }} as STD_ID_EXTERN_ORG,
+    {{ json_extract_scalar('_airbyte_data', ['STD_STRATEGIC_EMP'], ['STD_STRATEGIC_EMP']) }} as STD_STRATEGIC_EMP,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_PROB_END_DATE'], ['SUK_PROB_END_DATE']) }} as SUK_PROB_END_DATE,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_TERM_RESIG_DT'], ['SUK_TERM_RESIG_DT']) }} as SUK_TERM_RESIG_DT,
+    {{ json_extract_scalar('_airbyte_data', ['SAR_ID_SIT_REVISTA'], ['SAR_ID_SIT_REVISTA']) }} as SAR_ID_SIT_REVISTA,
+    {{ json_extract_scalar('_airbyte_data', ['SFR_DT_SENIORITY_G'], ['SFR_DT_SENIORITY_G']) }} as SFR_DT_SENIORITY_G,
+    {{ json_extract_scalar('_airbyte_data', ['SFR_DT_SENIORITY_L'], ['SFR_DT_SENIORITY_L']) }} as SFR_DT_SENIORITY_L,
+    {{ json_extract_scalar('_airbyte_data', ['SME_ID_MOT_BAJA_IM'], ['SME_ID_MOT_BAJA_IM']) }} as SME_ID_MOT_BAJA_IM,
+    {{ json_extract_scalar('_airbyte_data', ['SPO_ID_EST_SALARIO'], ['SPO_ID_EST_SALARIO']) }} as SPO_ID_EST_SALARIO,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_CHK_IRPF_MOVIL'], ['SSP_CHK_IRPF_MOVIL']) }} as SSP_CHK_IRPF_MOVIL,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_CHK_IRPF_PROLO'], ['SSP_CHK_IRPF_PROLO']) }} as SSP_CHK_IRPF_PROLO,
+    {{ json_extract_scalar('_airbyte_data', ['SSP_FEC_ANTIGUEDAD'], ['SSP_FEC_ANTIGUEDAD']) }} as SSP_FEC_ANTIGUEDAD,
+    {{ json_extract_scalar('_airbyte_data', ['STD_ID_HRP_END_REA'], ['STD_ID_HRP_END_REA']) }} as STD_ID_HRP_END_REA,
+    {{ json_extract_scalar('_airbyte_data', ['STD_ID_HRP_SRT_REA'], ['STD_ID_HRP_SRT_REA']) }} as STD_ID_HRP_SRT_REA,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_CONT_SERV_DATE'], ['SUK_CONT_SERV_DATE']) }} as SUK_CONT_SERV_DATE,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_CONT_SERV_REAS'], ['SUK_CONT_SERV_REAS']) }} as SUK_CONT_SERV_REAS,
+    {{ json_extract_scalar('_airbyte_data', ['SUK_EXT_PROB_END_D'], ['SUK_EXT_PROB_END_D']) }} as SUK_EXT_PROB_END_D,
+    _airbyte_ab_id,
+    _airbyte_emitted_at,
+    {{ current_timestamp() }} as _airbyte_normalized_at
+from {{ source('lnd_ula_pnet_prd', '_airbyte_raw_LND_TBL_STD_HR_PERIOD') }} as table_alias
+-- LND_TBL_STD_HR_PERIOD
+where 1 = 1
+{{ incremental_clause('_airbyte_emitted_at', this) }}
+
