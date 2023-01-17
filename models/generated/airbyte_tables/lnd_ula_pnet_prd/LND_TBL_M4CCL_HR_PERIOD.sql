@@ -18,7 +18,9 @@
                             do adapter.drop_relation(scd_table_relation)
                     %}
                     {% endif %}
-                        "],
+                        ", '{{ 
+        apply_default_policy_tag(this, "projects/df-central-command-prd/locations/us/taxonomies/3753529189283377636/policyTags/1570780607584273335")
+    }}'],
     tags = [ "top-level" ]
 ) }}
 -- Final base SQL model

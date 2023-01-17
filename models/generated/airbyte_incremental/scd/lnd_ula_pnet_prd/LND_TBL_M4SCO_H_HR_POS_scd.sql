@@ -49,7 +49,9 @@
                     -- We have to have a non-empty query, so just do a noop delete
                     delete from {{ this }} where 1=0
                     {% endif %}
-                    ","drop view _airbyte_lnd_ula_pnet_prd.LND_TBL_M4SCO_H_HR_POS_stg"],
+                    ","drop view _airbyte_lnd_ula_pnet_prd.LND_TBL_M4SCO_H_HR_POS_stg",'{{ 
+        apply_default_policy_tag(this, "projects/df-central-command-prd/locations/us/taxonomies/3753529189283377636/policyTags/1570780607584273335")
+    }}'],
     tags = [ "top-level" ]
 ) }}
 -- depends_on: ref('LND_TBL_M4SCO_H_HR_POS_stg')
